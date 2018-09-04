@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 			}
 		}
 		public function logout(){
-			Auth::logout();
+			Auth::guard('admin')->logout();
 			return redirect()->route('login');
 		}
 	}
