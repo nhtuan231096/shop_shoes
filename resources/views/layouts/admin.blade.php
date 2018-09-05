@@ -236,7 +236,12 @@
             </span>
           </a>
         </li>
-        
+        <li>
+          <a href="{{route('banner')}}">
+            <i class="fa fa-th"></i> <span>Banner</span>
+            </span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

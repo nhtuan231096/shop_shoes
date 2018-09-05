@@ -16,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share([
-            'cates'=>Category::all()
+            'cates'=>Category::all(),
+            'categorys'=>Category::where('parent',0)->orderBy('name','ASC')->get()
         ]);  
     }
 

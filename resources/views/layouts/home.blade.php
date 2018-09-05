@@ -93,22 +93,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				   <!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav nav_1">
-							<li><a href="index.html">Home</a></li>
+							<li><a href="{{route('home')}}">Home</a></li>
+							@foreach($categorys as $cate)
 							<li class="dropdown mega-dropdown active">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<span class="caret"></span></a>				
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$cate->name}}<span class="caret"></span></a>				
 								<div class="dropdown-menu mega-dropdown-menu">
 									<div class="container-fluid">
 										<!-- Tab panes -->
 										<div class="tab-content">
 										  <div class="tab-pane active" id="men">
-											<ul class="nav-list list-inline">
-												<li><a href="women.html"><img src="{{url('public')}}/images/t7.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="women.html"><img src="{{url('public')}}/images/t8.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="women.html"><img src="{{url('public')}}/images/t9.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="women.html"><img src="{{url('public')}}/images/t11.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="women.html"><img src="{{url('public')}}/images/t1.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="women.html"><img src="{{url('public')}}/images/t12.jpg" class="img-responsive" alt=""/></a></li>
-											</ul>
 										  </div>
 									   </div>
 									</div>
@@ -116,29 +109,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									                
 								</div>				
 							</li>
-							<li class="dropdown mega-dropdown active">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Men<span class="caret"></span></a>				
-								<div class="dropdown-menu mega-dropdown-menu">
-									<div class="container-fluid">
-										<!-- Tab panes -->
-										<div class="tab-content">
-										  <div class="tab-pane active" id="men">
-											<ul class="nav-list list-inline">
-												<li><a href="men.html"><img src="{{url('public')}}/images/t10.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="{{url('public')}}/images/t2.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="{{url('public')}}/images/t3.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="{{url('public')}}/images/t4.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="{{url('public')}}/images/t5.jpg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="{{url('public')}}/images/t6.jpg" class="img-responsive" alt=""/></a></li>
-											</ul>
-										  </div>
-										 
-									   </div>
-									</div>
-									<!-- Nav tabs -->
-									                   
-								</div>				
-							</li>
+							@endforeach
 							<li><a href="products.html">Products</a></li>
 							@if(Auth::check())
 							<li><a href="{{route('HomeLogin')}}">User</a></li>
