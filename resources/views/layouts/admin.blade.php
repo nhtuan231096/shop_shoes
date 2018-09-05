@@ -230,7 +230,12 @@
             <li><a href="{{route('addPro')}}"><i class="fa fa-circle-o"></i>Thêm mới sản phẩm</a></li>
           </ul>
         </li>
-        
+        <li>
+          <a href="{{route('user')}}">
+            <i class="fa fa-th"></i> <span>Tài khoản</span>
+            </span>
+          </a>
+        </li>
         
       </ul>
     </section>
