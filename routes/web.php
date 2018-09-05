@@ -14,6 +14,7 @@
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin'],function(){
 	Route::get('/','AdminController@index')->name('homeAdmin');
 	require 'category.php';
+	require 'product.php';
 });
 // Route login admin
 Route::get('/login','AuthController@login')->name('login');

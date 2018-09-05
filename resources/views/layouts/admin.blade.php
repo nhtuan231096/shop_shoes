@@ -218,7 +218,18 @@
             <li><a href="{{route('addCate')}}"><i class="fa fa-circle-o"></i>Thêm mới danh mục</a></li>
           </ul>
         </li>
-        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i> <span>Sản phẩm</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('listPro')}}"><i class="fa fa-circle-o"></i>Danh sách sản phẩm</a></li>
+            <li><a href="{{route('addPro')}}"><i class="fa fa-circle-o"></i>Thêm mới sản phẩm</a></li>
+          </ul>
+        </li>
         
         
       </ul>
