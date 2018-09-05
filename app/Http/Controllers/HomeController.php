@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Banner;
 use Auth;
 /**
  * 
@@ -11,7 +12,10 @@ class HomeController extends Controller
 	
 	function index()
 	{
-		return view('home.index');
+		$banner=Banner::where('status',1)->get();
+		return view('home.index',[
+			'banners'=>$banner
+		]);
 	}
 	function login()
 	{

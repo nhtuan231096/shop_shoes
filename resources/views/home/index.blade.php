@@ -6,19 +6,21 @@
 	<div class="slider">
 	<div class="callbacks_container">
   		<ul class="rslides" id="slider">
+  			@foreach($banners as $banner)
     		<li>
-      			<img src="{{url('public')}}/images/1.jpg" alt="">
+      			<img src="{{url('uploads/banner')}}/{{$banner->image}}" alt="">
 				<div class="tes animated wow fadeInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-					<h2>MEN & WOMEN</h2>
-					<h3>Trousers & Chinos</h3>
-					<h4>UPTO 50%</h4>
-					<p>OFFER</p>
+					<h2>{{$banner->caption_1}}</h2>
+					<h3>{{$banner->caption_2}}</h3>
+					<h4>{{$banner->caption_3}}</h4>
+					<p>{{$banner->caption_4}}</p>
 				</div>
    			 </li>
-	 		 <li>
+   			 @endforeach
+	 		 <!-- <li>
       			<img src="{{url('public')}}/images/3.jpg" alt=""> 
 				<div class="tes animated wow fadeInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-					<h2>MEN & WOMEN</h2>
+					<h2>MEN & aWOMEN</h2>
 					<h3>Trousers & Chinos</h3>
 					<h4>UPTO 50%</h4>
 					<p>OFFER</p>
@@ -32,7 +34,7 @@
 					<h4>UPTO 50%</h4>
 					<p>OFFER</p>
 				</div>
-    		</li>	
+    		</li>	 -->
   		</ul>
 	 	</div>
 </div>

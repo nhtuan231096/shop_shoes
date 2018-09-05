@@ -32,7 +32,21 @@
       <tbody>
         @foreach($banner as $bn)
           <tr>
-            <td></td>
+            <td>{{$bn->id}}</td>
+            <td>{{$bn->name}}</td>
+            <td>
+              <img width="200px" src="{{url('uploads/banner')}}/{{$bn->image}}" alt="image">
+            </td>
+            <td>{{$bn->links}}</td>
+            <td>{{$bn->caption_1}}</td>
+            <td>{{$bn->caption_2}}</td>
+            <td>{{$bn->caption_3}}</td>
+            <td>{{$bn->caption_4}}</td>
+            <td>{{$bn->status==1?"Hiện":"Ẩn"}}</td>
+            <td>
+              <a class="btn btn-xs btn-default fa fa-edit" href="{{route('editBanner',['id'=>$bn->id])}}"></a>
+              <a class="btn btn-xs btn-danger fa fa-trash" href="{{route('deleteBanner',['id'=>$bn->id])}}"></a>
+            </td>
           </tr>
         @endforeach
       </tbody>
