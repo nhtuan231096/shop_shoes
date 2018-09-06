@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Banner;
+use App\Models\Category;
+use App\Models\Product;
 use Auth;
 /**
  * 
@@ -55,6 +57,26 @@ class HomeController extends Controller
 		// dd($req->all());
 		User::create($req->all());
 		return redirect()->route('HomeLogin')->with('success_rg','Đăng ký thành công');
+	}
+	public function homeProduct(){
+		return view('home.product');
+	}
+	public function view($slug){
+		$category=Category::where('slug',$slug)->first();
+		$product=Product::where('slug',$slug)->first();
+		if($category){
+			return view('home.pro-list',[
+				'category'=>$category
+			]);
+		}
+		if($product){
+			return view('home.pro-detail',[
+				'product'=>$product
+			]);
+		}
+		else{
+			return view('home.errors');
+		}
 	}
 }
  ?>

@@ -14,6 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- Custom Theme files -->
 <!--theme-style-->
 <link href="{{url('public')}}/css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="{{url('public')}}/css/flexslider.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -95,22 +96,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="nav navbar-nav nav_1">
 							<li><a href="{{route('home')}}">Home</a></li>
 							@foreach($categorys as $cate)
-							<li class="dropdown mega-dropdown active">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$cate->name}}<span class="caret"></span></a>				
-								<div class="dropdown-menu mega-dropdown-menu">
-									<div class="container-fluid">
-										<!-- Tab panes -->
-										<div class="tab-content">
-										  <div class="tab-pane active" id="men">
-										  </div>
-									   </div>
-									</div>
-									<!-- Nav tabs -->
-									                
-								</div>				
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$cate->name}}<span class="caret"></span></a>
+								@if($cate->childs->count())
+									<ul class="dropdown-menu">
+										@foreach($cate->childs as $c)
+										<li><a href="">{{$c->name}}</a></li>
+										@endforeach
+									</ul>
+								@endif
 							</li>
 							@endforeach
-							<li><a href="products.html">Products</a></li>
+							<li><a href="{{route('homeProduct')}}">Products</a></li>
 							@if(Auth::check())
 							<li><a href="{{route('HomeLogin')}}">User</a></li>
 							@else
@@ -239,3 +236,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--footer-->
 </body>
 </html>
+
+

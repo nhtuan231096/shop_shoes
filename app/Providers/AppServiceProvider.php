@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use View;
 use App\Models\Category;
 use App\Models\Banner;
+use App\Models\Product;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +19,8 @@ class AppServiceProvider extends ServiceProvider
     {
         View::share([
             'cates'=>Category::all(),
-            'categorys'=>Category::where('parent',0)->orderBy('name','ASC')->get()
+            'categorys'=>Category::where('parent',0)->orderBy('name','ASC')->get(),
+            'products'=>Product::paginate(9)
         ]);  
     }
 

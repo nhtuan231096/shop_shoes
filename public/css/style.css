@@ -133,7 +133,7 @@ h1,h2,h3,h4,h5,h6,label,p{
     font-weight: 300;
 }
 .dropdown-menu {
-    right: 260px !important;
+    right: -25px !important;
     left:inherit;
 }    
 .nav_bottom{
@@ -1380,6 +1380,9 @@ a.to-buy:hover{
   -ms-transform: translateX(-50%) translateY(-50%);
   -o-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+}
+.bt{
+  margin-bottom: 25px !important;
 }
 .separator {
     display: block;

@@ -10,6 +10,9 @@ class Category extends Model
 	protected $fillable=[
 		'name','slug','parent','status'
 	];
+	public function Pros(){
+		return $this->hasMany('App\Models\Product','category_id','id');
+	}
 
 	public function scopeSearch($query){
 		if (empty(request()->search)) {
@@ -18,6 +21,9 @@ class Category extends Model
 		else{
 			return $query->where('name','like','%'.request()->search.'%');
 		}
+	}
+	public function childs(){
+		return $this->hasMany('App\Models\Category','parent','id');
 	}
 }
  ?>
