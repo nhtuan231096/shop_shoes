@@ -22,7 +22,7 @@
 						<h3><a href="single.html">{{$pro->name}}</a></h3>
 						<div class="price">
 							<h5 class="item_price">{{number_format($pro->sale_price>0?$pro->sale_price:$pro->price)}}đ</h5>
-							<a href="#" class="item_add">Add To Cart</a>
+							<a href="{{route('addCart',['id'=>$pro->id])}}" class="item_add">Add To Cart</a>
 							<div class="clearfix"> </div>
 						</div>
 					</div>

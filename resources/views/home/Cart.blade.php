@@ -9,6 +9,7 @@
 		</div>
 	</div>
 <!---->
+@if($cart->total_amount>0)
 <div class="container">
 	<div class="check-out">
 		<h2>Checkout</h2>
@@ -45,15 +46,33 @@
 			</td>		
 			<td>{{number_format($item['price'])}}đ</td>
 			<td>FREE SHIPPING</td>
-			<td>$150.00</td>
+			<td>{{number_format($item['price']*$item['qty'])}}đ</td>
 			<td>
 				<a class="btn btn-xs btn-danger" href="{{route('deleteCart',['id'=>$item['id']])}}"></a>
 			</td>
 		  </tr>
 		  @endforeach
 	</table>
-	<a href="#" class=" to-buy">PROCEED TO BUY</a>
-	<div class="clearfix"> </div>
+	<div class="text-center jumbotron">
+		<div class="container">
+			<h3>Tổng tiền: {{number_format($cart->total_amount)}}đ</h3>
+			<a href="{{route('home')}}" class=" to-buy">Tiếp tục mua hàng</a>
+			<a href="#" class=" to-buy">Tiến hành thanh toán</a>
+			<a href="{{route('clearCart')}}" class=" to-buy">Hủy giỏ hàng</a>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
     </div>
 </div>
+@else
+<div class="jumbotron">
+	<div class="text-center container">
+		<h2 class="animated wow fadeInRight">Bạn chưa có sản phẩm nào trong giỏ hàng</h2>
+		<p class="animated wow fadeInLeft">..</p>
+		<p>
+			<a href="{{route('home')}}" class="btn btn-default btn-lg animated wow fadeInLeft">Tiếp tục mua hàng</a>
+		</p>
+	</div>
+</div>
+@endif
 @stop()

@@ -222,62 +222,22 @@
 <div class="c-btm">
 <div class="content-top1">
 	<div class="container">
+		@foreach($pros as $pro)
 		<div class="col-md-3 col-md2 animated wow fadeInLeft" data-wow-delay=".5s">
 			<div class="col-md1 simpleCart_shelfItem">
 				<a href="single.html">
-					<img class="img-responsive" src="{{url('public')}}/images/pi9.png" alt="" />
+					<img class="img-responsive" src="{{url('uploads/product')}}/{{$pro->image}}" alt="" />
 				</a>
-				<h3><a href="single.html">Trousers</a></h3>
+				<h3><a href="single.html">{{$pro->name}}</a></h3>
 				<div class="price">
-						<h5 class="item_price">$300</h5>
-						<a href="#" class="item_add">Add To Cart</a>
+						<h5 class="item_price">{{number_format($pro->sale_price>0?$pro->sale_price:$pro->price)}} đ</h5>
+						<a href="{{route('addCart',['id'=>$pro->id])}}" class="item_add">Add To Cart</a>
 						<div class="clearfix"> </div>
 				</div>
 				
 			</div>
-		</div>	
-	<div class="col-md-3 col-md2 animated wow fadeInLeft" data-wow-delay=".5s">
-			<div class="col-md1 simpleCart_shelfItem">
-				<a href="single.html">
-					<img class="img-responsive" src="{{url('public')}}/images/pi10.png" alt="" />
-				</a>
-				<h3><a href="single.html">Formal</a></h3>
-				<div class="price">
-						<h5 class="item_price">$450</h5>
-						<a href="#" class="item_add">Add To Cart</a>
-						<div class="clearfix"> </div>
-				</div>
-				
-			</div>
-		</div>	
-	<div class="col-md-3 col-md2 animated wow fadeInRight" data-wow-delay=".5s">
-			<div class="col-md1 simpleCart_shelfItem">
-				<a href="single.html">
-					<img class="img-responsive" src="{{url('public')}}/images/pi11.png" alt="" />
-				</a>
-				<h3><a href="single.html">Trousers</a></h3>
-				<div class="price">
-						<h5 class="item_price">$350</h5>
-						<a href="#" class="item_add">Add To Cart</a>
-						<div class="clearfix"> </div>
-				</div>
-				
-			</div>
-		</div>	
-	<div class="col-md-3 col-md2 animated wow fadeInRight" data-wow-delay=".5s">
-			<div class="col-md1 simpleCart_shelfItem">
-				<a href="single.html">
-					<img class="img-responsive" src="{{url('public')}}/images/pi12.png" alt="" />
-				</a>
-				<h3><a href="single.html">Formal</a></h3>
-				<div class="price">
-						<h5 class="item_price">$400</h5>
-						<a href="#" class="item_add">Add To Cart</a>
-						<div class="clearfix"> </div>
-				</div>
-				
-			</div>
-		</div>	
+		</div>
+		@endforeach
 	<div class="clearfix"> </div>
 	</div>	
 </div>

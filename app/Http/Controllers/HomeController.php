@@ -6,17 +6,28 @@ use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Product;
 use Auth;
+use View;
+use App\Carts\Cart;
 /**
  * 
  */
 class HomeController extends Controller
 {
-	
+	public function __construct(){
+		$this->middleware(function($request,$next){
+            View::share([
+            'cart'=>new Cart
+            ]);  
+            return $next($request);
+        });
+	}
 	function index()
 	{
 		$banner=Banner::where('status',1)->get();
+		$pros=Product::OrderBy('id','DESC')->limit(4)->get();
 		return view('home.index',[
-			'banners'=>$banner
+			'banners'=>$banner,
+			'pros'=>$pros
 		]);
 	}
 	function login()
@@ -60,6 +71,9 @@ class HomeController extends Controller
 	}
 	public function homeProduct(){
 		return view('home.product');
+	}
+	public function contact(){
+		return view('home.contact');
 	}
 	public function view($slug){
 		$category=Category::where('slug',$slug)->first();

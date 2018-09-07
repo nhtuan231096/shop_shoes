@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Youth Fashion A Ecommerce Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<title>Shop shoes</title>
 <link href="{{url('public')}}/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{url('public')}}/js/jquery.min.js"></script>
@@ -52,16 +52,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 				<div class="col-sm-4 logo animated wow fadeInLeft" data-wow-delay=".5s">
-					<h1><a href="index.html">Youth <span>Fashion</span></a></h1>	
+					<h1><a href="{{route('home')}}">Shop <span>Shoes</span></a></h1>	
 				</div>
 			<div class="col-sm-4 world animated wow fadeInRight" data-wow-delay=".5s">
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="{{route('viewCart')}}">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="{{url('public')}}/images/cart.png" alt=""/></h3>
+							@if($cart->total_amount>0)
+							<span class="">{{number_format($cart->total_amount)}}đ</span></div>
+							<img src="{{url('public')}}/images/cart.png" alt=""/>({{$cart->total_qty}})</h3>
 						</a>
+						@else
+						<img src="{{url('public')}}/images/cart.png" alt=""/></h3>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						@endif
 
 					</div>
 			</div>
@@ -94,26 +98,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				   <!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav nav_1">
-							<li><a href="{{route('home')}}">Home</a></li>
+							<li><a href="{{route('home')}}">Trang chủ</a></li>
 							@foreach($categorys as $cate)
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$cate->name}}<span class="caret"></span></a>
 								@if($cate->childs->count())
 									<ul class="dropdown-menu">
 										@foreach($cate->childs as $c)
-										<li><a href="">{{$c->name}}</a></li>
+										<li><a href="{{route('view',['slug'=>$c->slug])}}">{{$c->name}}</a></li>
 										@endforeach
 									</ul>
 								@endif
 							</li>
 							@endforeach
-							<li><a href="{{route('homeProduct')}}">Products</a></li>
+							<li><a href="{{route('homeProduct')}}">Sản phẩm</a></li>
 							@if(Auth::check())
 							<li><a href="{{route('HomeLogin')}}">User</a></li>
 							@else
-							<li><a href="{{route('HomeLogin')}}">Sign In</a></li>
+							<li><a href="{{route('HomeLogin')}}">Đăng nhập</a></li>
 							@endif
-							<li class="last"><a href="contact.html">Contact</a></li>
+							<li class="last"><a href="{{Route('Contact')}}">Liên hệ</a></li>
 						</ul>
 					 </div><!-- /.navbar-collapse -->
 				  

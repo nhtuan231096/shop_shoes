@@ -31,6 +31,7 @@ Route::group(['prefix'=>'/'], function () {
  	Route::get('home-logout','HomeController@logout')->name('HomeLogout');
  	Route::get('register','HomeController@register')->name('HomeRegister');
  	Route::post('register','HomeController@p_register')->name('HomeRegister');
+ 	Route::get('contact','HomeController@contact')->name('Contact');
  	
  	Route::get('product','HomeController@homeProduct')->name('homeProduct');
  	Route::get('//{slug}.html','HomeController@view')->name('view');
@@ -40,5 +41,6 @@ Route::group(['prefix'=>'/'], function () {
  	Route::get('view-cart','CartController@view')->name('viewCart');
  	Route::get('update-cart/{id}','CartController@update')->name('update_cart');
  	Route::get('delete-cart/{id}','CartController@delete')->name('deleteCart');
+ 	Route::get('clear-cart','CartController@clear')->name('clearCart');
 
 });

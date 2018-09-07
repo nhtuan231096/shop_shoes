@@ -10,9 +10,10 @@ class Category extends Model
 	protected $fillable=[
 		'name','slug','parent','status'
 	];
-	public function Pros(){
-		return $this->hasMany('App\Models\Product','category_id','id');
-	}
+	public function products()
+   {
+   		return $this->hasMany('App\Models\Product','category_id','id');
+   }
 
 	public function scopeSearch($query){
 		if (empty(request()->search)) {

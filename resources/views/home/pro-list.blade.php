@@ -11,18 +11,18 @@
 <!--content-->
 <div class="products">
 	<div class="container">
-		<h2>Products</h2>
+		<h2>{{$category->name}}</h2>
 		<div class="col-md-9">
-				@foreach($category->Pros as $pro)
+				@foreach($category->products as $pro)
 				<div class="col-md-4 col-md4 bt">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="{{route('view',['slug'=>$pro->slug])}}">
 							<img class="img-responsive" src="{{url('uploads/product')}}/{{$pro->image}}" alt="image" />
 						</a>
-						<h3><a href="single.html">{{$pro->name}}</a></h3>
+						<h3><a href="{{route('view',['slug'=>$pro->slug])}}">{{$pro->name}}</a></h3>
 						<div class="price">
 							<h5 class="item_price">{{number_format($pro->sale_price>0?$pro->sale_price:$pro->price)}}đ</h5>
-							<a href="#" class="item_add">Add To Cart</a>
+							<a href="{{route('addCart',['id'=>$pro->id])}}" class="item_add">Add To Cart</a>
 							<div class="clearfix"> </div>
 						</div>
 					</div>

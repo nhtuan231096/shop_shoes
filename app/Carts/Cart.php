@@ -6,10 +6,16 @@ namespace App\Carts;
 class Cart
 {
 	public $items=[];
+	public $total_qty=0;
+	public $amount=0;
+	public $total_amount=0;
 	public function __construct()
 	{
 		# code...
-		$this->items=session('cart');
+		$this->items=session('cart')?session('cart'):[];
+		$this->total_qty=$this->total_qty();
+		$this->total_amount=$this->total_amount();
+		$this->amount=$this->amount();
 	}
 	public function add($model){
 		if(isset($this->items[$model->id])){
@@ -38,6 +44,29 @@ class Cart
 		}
 		session(['cart'=>$this->items]);
 	}
-
+	public function clear(){
+		session(['cart'=>[]]);
+	}
+	protected function total_qty(){
+		$t=0;
+		foreach($this->items as $item){
+			$t+=$item['qty'];
+		}
+		return $t;
+	}
+	protected function amount(){
+		$t=[];
+		foreach($this->items as $item){
+			$t=$item['qty']*$item['price'];
+		}
+		return $t;
+	}
+	protected function total_amount(){
+		$t=0;
+		foreach($this->items as $item){
+			$t=$t+($item['qty']*$item['price']);
+		}
+		return $t;
+	}
 }
  ?>

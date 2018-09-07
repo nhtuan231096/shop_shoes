@@ -35,5 +35,9 @@ class CartController extends Controller
 		$cart->delete($id);
 		return redirect()->back()->with('success','Đã hủy sản phẩm trong giỏ hàng');
 	}
+	public function clear(Cart $cart){
+		$cart->clear();
+		return redirect()->back()->with('success','Đã hủy giỏ hàng');
+	}
 }
  ?>
